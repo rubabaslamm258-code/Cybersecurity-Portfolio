@@ -1,0 +1,25 @@
+Security incident report
+
+Section 1: Identify the network protocol involved in the incident
+
+The protocol involved in this incident was HTTP (Hypertext Transfer Protocol). Since the problem occurred while accessing the yummyrecipesforme.com website, the communication between the user's browser and the web server used HTTP traffic. When we ran tcpdump and visited the website, the log file showed HTTP being used. The malicious file was delivered to users' computers through the HTTP protocol at the application layer.
+
+
+Section 2: Document the incident
+
+Several customers reported that when they visited the website, they were asked to download and run a file that claimed to provide access to new recipes. After running the file, their computers became slow. The website owner also reported being locked out of their administrator account.
+
+To investigate, a cybersecurity analyst opened the website in a sandbox environment to avoid affecting the company network. The analyst used tcpdump to capture network traffic while interacting with the website. During the investigation, the analyst downloaded and ran the file. After doing so, the browser redirected to a fake website called greatrecipesforme.com.
+
+The tcpdump logs showed that the browser first requested the IP address for yummyrecipesforme.com. After connecting through HTTP, the analyst downloaded and executed the file. The logs then showed a sudden change in network traffic, with the browser requesting the IP address for greatrecipesforme.com and being redirected to that website.
+
+After reviewing the website source code and the downloaded file, the cybersecurity team discovered that an attacker had modified the website to display a fake download prompt. The file was actually malicious software disguised as a browser update. Since the website owner could no longer access their administrator account, the team believes the attacker gained access through a brute-force attack and changed the password. Running the malicious file caused the users' computers to become compromised.
+
+Section 3: Recommend one remediation for brute force attacks
+
+To help prevent brute-force attacks, the team plans to implement several security measures. First, users will not be allowed to reuse old passwords, especially default passwords. This will reduce the risk of attackers gaining access using previously known passwords.
+
+Second, users will be required to update their passwords more frequently. Regular password changes help reduce the chances of unauthorized users accessing accounts if a password becomes known.
+
+Finally, the team plans to enable two-factor authentication (2FA). With 2FA, users must enter their password and then verify their identity using a one-time passcode (OTP) sent to their email or phone. Even if an attacker discovers a password, they will still need the OTP to access the account, making it much more difficult to gain unauthorized access.
+

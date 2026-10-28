@@ -1,0 +1,25 @@
+Cybersecurity Incident Report: 
+Network Traffic Analysis
+
+Part 1: Provide a summary of the problem found in the DNS and ICMP 
+traffic log.
+
+The client's computer (192.51.100.15) attempted to send a DNS request (an A record query) to the DNS server (203.0.113.2) to find the IP address for yummyrecipesforme.com.
+udp port 53 unreachable (Note: The log actually shows an ICMP destination unreachable error, not a standard "echo reply").
+The port noted in the error message is used for: Port 53 is used for DNS (Domain Name System) services, which translate website names (like yummyrecipesforme.com) into computer-readable IP addresses.
+The DNS service on the server (203.0.113.2) is completely down, turned off, or misconfigured, meaning no service is actively listening to handle incoming requests on Port 53.
+
+
+Part 2: Explain your analysis of the data and provide at least one cause of the incident.
+
+The log shows the incident repeated three times at 13:24:32, 13:26:32, and 13:28:32 (between 1:24 PM and 1:28 PM).
+Several customers reported that they could not access the website www.yummyrecipesforme.com and received a "destination port unreachable" error page.
+ A cybersecurity analyst first tried visiting the website to confirm the error. Then, they used the network analyzer tool tcpdump to capture and examine the live network traffic packets while trying to load the page again.
+Source IP: 192.51.100.15 (Analyst's computer)
+Destination/DNS Server IP: 203.0.113.2 
+Protocol Impacted: UDP / DNS
+Port Affected: Port 53
+Every time a DNS query (35084+ A?) was sent, the remote server immediately replied with an ICMP error packet stating that Port 53 was unreachable. This happened multiple times, confirming a persistent server-side issue.
+The DNS server software crashed or was accidentally stopped on the host server, leaving Port 53 closed. Alternatively, a firewall rule might have been improperly updated on the server's side, blocking incoming UDP traffic to Port 53.
+
+

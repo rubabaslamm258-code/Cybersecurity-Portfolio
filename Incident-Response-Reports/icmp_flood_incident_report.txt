@@ -1,0 +1,19 @@
+Incident report analysis
+
+Summary
+	Our company suffered a cyberattack that caused all of our network services to crash. The security team discovered it was a DDoS attack, where the hackers overwhelmed our system by flooding it with a massive wave of fake data traffic (specifically, ICMP packets).
+
+Identify
+	A malicious actor launched an ICMP flood attack against the company, which impacted the entire internal network. The team's immediate priority was to secure all critical network resources and restore them to full operation.
+
+Protect
+	To prevent future attacks, the cybersecurity team updated the firewall to limit the speed of incoming ICMP traffic. They also deployed an IDS/IPS system to automatically spot and block any suspicious network activity.
+
+Detect
+	The cybersecurity team set up source IP verification on the firewall to catch and block fake IP addresses hidden in incoming ICMP traffic. They also installed network monitoring software to watch for and alert them to any unusual traffic patterns.
+
+Respond
+	If another security incident happens, the cybersecurity team will immediately isolate the affected systems to contain the damage. Their first priority will be to safely recover any critical services that went down. Afterward, they will analyze the network logs to investigate the suspicious activity and report the details to senior leadership and law enforcement if necessary.
+
+Recover
+	To recover from an ICMP flood attack, the primary goal is getting network services running normally again. If this happens in the future, the team can block the incoming flood right at the firewall. From there, shutting down non-essential network services will help clear out internal traffic so that critical business systems can be brought back online first. Finally, once the flood of data packets drops off and times out, all remaining non-critical systems can be safely powered back up.

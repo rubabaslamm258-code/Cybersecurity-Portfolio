@@ -4,7 +4,7 @@ Welcome to my cybersecurity portfolio! This repository showcases hands-on experi
 
 ---
 
-## 📁 Repository Contents
+##  Repository Contents
 
 ### 1. Python Scripts (`/Python-Scripts`)
 * Log parsing and automated security analysis scripts.
